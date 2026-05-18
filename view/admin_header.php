@@ -19,6 +19,7 @@
             <a href="admin_customers.php">Customers</a>
             <a href="admin_orders.php">Purchase Requests</a>
             <a href="admin_purchase_history.php">Purchase History</a>
+            <a href="profile.php">Edit Profile</a>
             <a href="../controller/adminController.php?action=logout">Logout</a>
         </div>
         <div class="content">
