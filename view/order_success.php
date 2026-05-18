@@ -63,15 +63,15 @@ foreach($orders as $o){
         </div>
         <div class="info-row">
             <span class="info-label">Order Date:</span>
-            <span><?=$currentOrder['order_date']?></span>
+            <span><?=htmlspecialchars($currentOrder['order_date'])?></span>
         </div>
         <div class="info-row">
             <span class="info-label">Payment Method:</span>
-            <span><?=$currentOrder['payment_method']?></span>
+            <span><?=htmlspecialchars($currentOrder['payment_method'])?></span>
         </div>
         <div class="info-row">
             <span class="info-label">Shipping Address:</span>
-            <span><?=$currentOrder['shipping_address']?></span>
+            <span><?=htmlspecialchars($currentOrder['shipping_address'])?></span>
         </div>
         <div class="info-row">
             <span class="info-label">Status:</span>
@@ -89,15 +89,15 @@ foreach($orders as $o){
             </tr>
             <?php foreach($orderItems as $item){ ?>
             <tr>
-                <td><?=$item['name']?></td>
-                <td><?=$item['vendor_name']?></td>
+                <td><?=htmlspecialchars($item['name'])?></td>
+                <td><?=htmlspecialchars($item['vendor_name'])?></td>
                 <td><?=$item['quantity']?></td>
-                <td>Tk <?=$item['unit_price']?></td>
-                <td>Tk <?=$item['quantity'] * $item['unit_price']?></td>
+                <td>Tk <?=htmlspecialchars($item['unit_price'])?></td>
+                <td>Tk <?=htmlspecialchars($item['quantity'] * $item['unit_price'])?></td>
             </tr>
             <?php } ?>
         </table>
-        <div class="total">Total: Tk <?=$currentOrder['total_amount']?></div>
+        <div class="total">Total: Tk <?=htmlspecialchars($currentOrder['total_amount'])?></div>
         <?php } ?>
 
         <a href="home.php" class="btn btn-primary">Continue Shopping</a>

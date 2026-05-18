@@ -103,7 +103,7 @@ if($step == 'confirm' && $_SERVER['REQUEST_METHOD'] == 'POST'){
         <h1>Checkout</h1>
 
         <?php if($error){ ?>
-        <div class="error"><?=$error?></div>
+        <div class="error"><?=htmlspecialchars($error)?></div>
         <?php } ?>
 
         <!-- Step 1: Address + Payment + Invoice + Confirm all in one form -->
@@ -120,7 +120,7 @@ if($step == 'confirm' && $_SERVER['REQUEST_METHOD'] == 'POST'){
                 </tr>
                 <?php foreach($cartItems as $item){ ?>
                 <tr>
-                    <td><?=$item['name']?></td>
+                    <td><?=htmlspecialchars($item['name'])?></td>
                     <td><?=$item['quantity']?></td>
                     <td>Tk <?=$item['price']?></td>
                     <td>Tk <?=$item['price'] * $item['quantity']?></td>
@@ -135,7 +135,7 @@ if($step == 'confirm' && $_SERVER['REQUEST_METHOD'] == 'POST'){
             <h2>Shipping Address</h2>
             <div class="form-group">
                 <label>Address:</label>
-                <textarea name="address" id="address" rows="3" placeholder="Enter your shipping address..."><?=$_SESSION['address'] ?? ''?></textarea>
+                <textarea name="address" id="address" rows="3" placeholder="Enter your shipping address..."><?=htmlspecialchars($_SESSION['address'] ?? '')?></textarea>
             </div>
 
             <hr style="margin: 20px 0;">

@@ -62,9 +62,9 @@ $orders  = getOrdersByUser($user_id);
             <?php foreach($orders as $order){ ?>
             <tr>
                 <td>#<?=$order['id']?></td>
-                <td><?=$order['order_date']?></td>
+                <td><?=htmlspecialchars($order['order_date'])?></td>
                 <td>Tk <?=$order['total_amount']?></td>
-                <td><?=$order['payment_method']?></td>
+                <td><?=htmlspecialchars($order['payment_method'])?></td>
                 <td><?=htmlspecialchars($order['shipping_address'])?></td>
                 <td>
                     <span class="status-<?=$order['status']?>">

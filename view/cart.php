@@ -64,8 +64,8 @@ foreach($cartItems as $item){
             </tr>
             <?php foreach($cartItems as $item){ ?>
             <tr id="row-<?=$item['id']?>">
-                <td><?=$item['name']?></td>
-                <td><?=$item['vendor_name']?></td>
+                <td><?=htmlspecialchars($item['name'])?></td>
+                <td><?=htmlspecialchars($item['vendor_name'])?></td>
                 <td>Tk <?=$item['price']?></td>
                 <td>
                     <button class="qty-btn" onclick="updateQty(<?=$item['id']?>, -1)">-</button>
@@ -95,6 +95,10 @@ foreach($cartItems as $item){
             var qtyEl = document.getElementById('qty-' + cartId);
             var newQty = parseInt(qtyEl.innerText) + change;
 
+            if(isNaN(newQty) || newQty < 1){
+                alert('Invalid quantity!');
+                return;
+            }
             if(newQty < 1) {
                 removeItem(cartId);
                 return;
