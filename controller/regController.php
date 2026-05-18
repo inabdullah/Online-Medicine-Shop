@@ -73,13 +73,11 @@ $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 $registered = registerUser($name, $email, $passwordHash, $role, $address, $phone);
 
 if ($registered) {
-    $_SESSION["success"] = "Registration successful.";
-    header("Location: ../view/reg.php"); //Needs to change to login.php after login page is done
+    $_SESSION["success"] = "Registration successful. You can now log in.";
+    header("Location: ../view/login.php");
     exit;
 }
 
 $_SESSION["errors"] = ["form" => "Registration failed. Please try again."];
 header("Location: ../view/reg.php");
 exit;
-
-?>
