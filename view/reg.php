@@ -57,7 +57,7 @@ function oldValue($old, $field)
 
                 <label>
                     Email:
-                    <input type="email" name="email" id="email" value="<?= oldValue($old, "email") ?>"required>
+                    <input type="email" name="email" id="email" value="<?= oldValue($old, "email") ?>">
                     <span id="emailError" class="error"></span>
                     <?= showError($errors, "email") ?>
                 </label>
@@ -65,7 +65,7 @@ function oldValue($old, $field)
 
                 <label>
                     Password:
-                    <input type="password" name="password" id="password" required>
+                    <input type="password" name="password" id="password" >
                     <span id="passwordError" class="error"></span>
                     <?= showError($errors, "password") ?>
                 </label>
@@ -73,7 +73,7 @@ function oldValue($old, $field)
 
                 <label>
                     Confirm Password:
-                    <input type="password" name="confirm_password" id="confirm_password" required>
+                    <input type="password" name="confirm_password" id="confirm_password" >
                     <span id="confirmPasswordError" class="error"></span>
                     <?= showError($errors, "confirm_password") ?>
                 </label>
@@ -81,7 +81,7 @@ function oldValue($old, $field)
 
                 <label>
                     Address:
-                    <input type="text" name="address" id="address" value="<?= oldValue($old, "address") ?>" required>
+                    <input type="text" name="address" id="address" value="<?= oldValue($old, "address") ?>" >
                     <span id="addressError" class="error"></span>
                     <?= showError($errors, "address") ?>
                 </label>
@@ -89,7 +89,7 @@ function oldValue($old, $field)
 
                 <label>
                     Phone:
-                    <input type="text" name="phone" id="phone" value="<?= oldValue($old, "phone") ?>" required>
+                    <input type="text" name="phone" id="phone" value="<?= oldValue($old, "phone") ?>" >
                     <span id="phoneError" class="error"></span>
                     <?= showError($errors, "phone") ?>
                 </label>
@@ -97,7 +97,7 @@ function oldValue($old, $field)
 
                 <label>
                     Role:
-                    <select name="role" id="role" required>
+                    <select name="role" id="role" >
                         <option value="">--Select--</option>
                         <option value="admin" <?= (($old["role"] ?? "") === "admin") ? "selected" : "" ?>>Admin</option>
                         <option value="customer" <?= (($old["role"] ?? "") === "customer") ? "selected" : "" ?>>Customer</option>
@@ -120,78 +120,7 @@ function oldValue($old, $field)
 
 </div>
 
- <script>
-function validateRegistration() {
+<script src="../asset/js/regValidation.js"></script>
 
-    let isValid = true;
-
-    
-    document.getElementById("nameError").innerHTML = "";
-    document.getElementById("emailError").innerHTML = "";
-    document.getElementById("passwordError").innerHTML = "";
-    document.getElementById("confirmPasswordError").innerHTML = "";
-    document.getElementById("addressError").innerHTML = "";
-    document.getElementById("phoneError").innerHTML = "";
-    document.getElementById("roleError").innerHTML = "";
-
-    
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirm_password").value;
-    const address = document.getElementById("address").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const role = document.getElementById("role").value;
-
-    
-    if (name === "") {
-        document.getElementById("nameError").innerHTML = "Name is required";
-        isValid = false;
-    }
-
-    
-    if (email === "") {
-        document.getElementById("emailError").innerHTML = "Email is required";
-        isValid = false;
-    }
-
-    
-    if (password.length < 8) {
-        document.getElementById("passwordError").innerHTML =
-            "Password must be at least 8 characters";
-        isValid = false;
-    }
-
-    
-    if (password !== confirmPassword) {
-        document.getElementById("confirmPasswordError").innerHTML =
-            "Passwords do not match";
-        isValid = false;
-    }
-
-    
-    if (address === "") {
-        document.getElementById("addressError").innerHTML =
-            "Address is required";
-        isValid = false;
-    }
-
-    
-    if (phone === "") {
-        document.getElementById("phoneError").innerHTML =
-            "Phone is required";
-        isValid = false;
-    }
-
-    
-    if (role === "") {
-        document.getElementById("roleError").innerHTML =
-            "Please select a role";
-        isValid = false;
-    }
-
-    return isValid;
-}
-</script>
 </body>
 </html>
