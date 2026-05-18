@@ -1,7 +1,27 @@
 <?php
 session_start();
+
+require_once __DIR__ . "/../model/userModel.php";
+
+// Clear remember token from DB if exists
+if (isset($_SESSION["user_id"])) {
+    clearRememberToken((int)$_SESSION["user_id"]);
+}
+
+// Clear the cookie
+if (isset($_COOKIE["remember_token"])) {
+    setcookie("remember_token", "", [
+        "expires"  => time() - 3600,
+        "path"     => "/",
+        "httponly" => true,
+        "samesite" => "Lax",
+    ]);
+}
+
+// Destroy session
+session_unset();
 session_destroy();
-setcookie('status', '', time()-3600);
-header('location: ../view/login.php');
-exit();
-?>
+
+header("Location: ../view/login.php");
+exit;
+
